@@ -1,0 +1,14 @@
+C:\Users\User\Documents\Github\UnityEngineBasic_2\Opereators\bin\Debug\net6.0\Opereators.exe
+C:\Users\User\Documents\Github\UnityEngineBasic_2\Opereators\bin\Debug\net6.0\Opereators.deps.json
+C:\Users\User\Documents\Github\UnityEngineBasic_2\Opereators\bin\Debug\net6.0\Opereators.runtimeconfig.json
+C:\Users\User\Documents\Github\UnityEngineBasic_2\Opereators\bin\Debug\net6.0\Opereators.dll
+C:\Users\User\Documents\Github\UnityEngineBasic_2\Opereators\bin\Debug\net6.0\Opereators.pdb
+C:\Users\User\Documents\Github\UnityEngineBasic_2\Opereators\obj\Debug\net6.0\Opereators.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\Github\UnityEngineBasic_2\Opereators\obj\Debug\net6.0\Opereators.AssemblyInfoInputs.cache
+C:\Users\User\Documents\Github\UnityEngineBasic_2\Opereators\obj\Debug\net6.0\Opereators.AssemblyInfo.cs
+C:\Users\User\Documents\Github\UnityEngineBasic_2\Opereators\obj\Debug\net6.0\Opereators.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\Github\UnityEngineBasic_2\Opereators\obj\Debug\net6.0\Opereators.dll
+C:\Users\User\Documents\Github\UnityEngineBasic_2\Opereators\obj\Debug\net6.0\refint\Opereators.dll
+C:\Users\User\Documents\Github\UnityEngineBasic_2\Opereators\obj\Debug\net6.0\Opereators.pdb
+C:\Users\User\Documents\Github\UnityEngineBasic_2\Opereators\obj\Debug\net6.0\Opereators.genruntimeconfig.cache
+C:\Users\User\Documents\Github\UnityEngineBasic_2\Opereators\obj\Debug\net6.0\ref\Opereators.dll

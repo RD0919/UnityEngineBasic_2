@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Documents\\Github\\UnityEngineBasic_2\\CSharp\\FirstProject\\FirstProject.csproj": {}
+    "C:\\Users\\User\\Documents\\Github\\UnityEngineBasic_2\\Opereators\\Opereators.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Documents\\Github\\UnityEngineBasic_2\\CSharp\\FirstProject\\FirstProject.csproj": {
+    "C:\\Users\\User\\Documents\\Github\\UnityEngineBasic_2\\Opereators\\Opereators.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Documents\\Github\\UnityEngineBasic_2\\CSharp\\FirstProject\\FirstProject.csproj",
-        "projectName": "FirstProject",
-        "projectPath": "C:\\Users\\User\\Documents\\Github\\UnityEngineBasic_2\\CSharp\\FirstProject\\FirstProject.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\Github\\UnityEngineBasic_2\\Opereators\\Opereators.csproj",
+        "projectName": "Opereators",
+        "projectPath": "C:\\Users\\User\\Documents\\Github\\UnityEngineBasic_2\\Opereators\\Opereators.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Documents\\Github\\UnityEngineBasic_2\\CSharp\\FirstProject\\obj\\",
+        "outputPath": "C:\\Users\\User\\Documents\\Github\\UnityEngineBasic_2\\Opereators\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
