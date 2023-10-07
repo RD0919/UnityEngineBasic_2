@@ -1,6 +1,4 @@
-﻿using System.IO.MemoryMappedFiles;
-
-namespace Array
+﻿namespace Array
 {
     internal class Program
     {
@@ -12,12 +10,12 @@ namespace Array
         //3 => 플레이어
         static int[,] map = new int[6, 5]
         {
-                {0, 0, 0, 0, 1},
-                {0, 1, 1, 1, 1},
                 {0, 0, 0, 0, 0},
-                {0, 1, 0, 1, 0},
-                {0, 1, 0, 1, 1},
-                {1, 1, 0, 0, 2},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 1, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 2},
         };
         static int y, x;
 
@@ -45,7 +43,7 @@ namespace Array
             //}
 
             int index = 0;
-            while(index < arr.Length) //true면 게속 반복
+            while (index < arr.Length) //true면 게속 반복
             {
                 Console.WriteLine(arr[index++]);
             }
@@ -61,14 +59,14 @@ namespace Array
             //{
             //    반복할 내용
             //}
-            for (int i = 0; i < arr.Length; i++) 
+            for (int i = 0; i < arr.Length; i++)
             {
                 Console.WriteLine(arr[i]);
             }
             int[] arr2 = new int[8];
             System.Array.Copy(arr, arr2, arr.Length);
 
-            for (int i = 0;i < arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
                 arr2[i] = arr[i];
             }
@@ -89,15 +87,15 @@ namespace Array
                 else Console.WriteLine("w,a,s,d 를 눌러 주세요");
 
             }
-            
+
 
         }
 
         static void DrawMap()
         {
-            for (int i = 0;i < map.GetLength(0); i++) 
+            for (int i = 0; i < map.GetLength(0); i++)
             {
-                for(int j = 0;j < map.GetLength(1); j++)
+                for (int j = 0; j < map.GetLength(1); j++)
                 {
                     if (map[i, j] == 0)
                         Console.Write("□");
@@ -113,7 +111,7 @@ namespace Array
             }
         }
         static void MoveUp() { }
-        static void MoveDown() 
+        static void MoveDown()
         {
             //맵 범위 초과 확인
             if (x == 0)
@@ -158,7 +156,7 @@ namespace Array
         static void MoveRight()
         {
             //맵 범위 초과 확인
-            if(x >= map.GetLength(1) - 1)
+            if (x >= map.GetLength(1) - 1)
             {
                 Console.WriteLine("해당 방향으로 움직일 수 없습니다 맵을 초과");
                 return;
