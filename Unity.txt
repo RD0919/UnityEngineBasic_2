@@ -1,0 +1,65 @@
+6주차
+GetComponent<RectTransform>(); 이컴포넌트를 가지는 GameObject가 가지는 컴포넌트들 중에 해당 타입을 찾아서 반환함
+
+인라인 함수 : 함수 오버헤드를 줄이기 위해 기능 구현부를 해당 라인에 직접 삽입하는 함수
+C#에서는 인라인 함수 구현 : 익명함수 (람다식) 으로 구현함.
+람다식 : 컴파일러가 판단할 수 있는 코드를 모두 생략하고 이름을 생략한 함수식
+ex) RefreshHPBar
+private void RefreshHPBar(float value)
+    {
+        _hpBar.value = value;
+    }
+1. 인라인함수는 접근제한자가 의미 없으므로 private 생략
+2. 구독하려는 대리자의 형식이 float 파라미터 1개와 void 반환이므로 void 및 float 타립 생략
+3. 인라인이므로 이름으로 함수 검색을 할 일이 없으므로 이름 생략
+5. 구현부 한줄이면 그다음은 반드시 함수 리턴이 일어나야하므로 함수 범위 지정 필요없으므로 중괄호 생략
+Generic
+어떤 타입을 일반화하는 사용자정의 서식
+MonoBehaviour .. 
+Component 의 기본 단위 , 생성자를 직접 호출해서 생성하는게 아니고
+해당 Script Instance 가 로드될 때 객체가 생성이 됨. 
+-> 직접 우리가 생성자를 호출하면 안됨. 
+public class Test : MonoBehaviour
+{
+     씬이 로드되고나서 이 클래스를 컴포넌트로 가지는 게임오브젝트가 로드될때 이 클래스에 대한 스크립트 인스턴스도 로드됨.
+     (이 클래스를 컴포넌트로 가지는 게임오브젝트가 비활성화된 채로 씬이 로드되었다면, 스크립트인스턴스도 로드되지않음. 
+     활성화되는 순간 스크립트 인스턴스도 로드함 )
+     스크립트 인스턴스가 로드될 때 한번 호출
+     생성자에서 보통 구현하는 멤버 초기화 등에대한 구현을 Awake()에다가 해주면 된다..
+    private void Awake()
+    {
+        Debug.Log("Awake");
+    }
+
+     이 Component 가 활성화 될 때마다 호출 
+     (이 클래스인스턴스를 Component 로 가지는 GameObject 가 활성화 될 때마다 마찬가지로 호출)
+    private void OnEnable()
+    {
+        Debug.Log("Enabled");
+    }
+
+     Editor 에서만 호출, 해당 스크립트인스턴스가 GameObject 에 Add 될 때 및 개발자가 Editor 에서 직접 호출할 때 호출
+     모든 멤버 값들을 초기값으로 되돌림
+    private void Reset()
+    {
+        Debug.Log("Reset");
+    }
+
+     게임 로직 시작 직전에 딱 한번 호출
+    private void Start()
+    {
+        Debug.Log("Start");
+    }
+
+
+     물리연산을 위한 프레임 (고정프레임, Fixed frame) 마다 호출
+    private void FixedUpdate()
+    {
+        //Debug.Log("Fixed Update");
+    }
+
+     trigger 옵션이 켜진 Collider 에 대한 겹침 이벤트
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }

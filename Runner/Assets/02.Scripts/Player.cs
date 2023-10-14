@@ -1,7 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
+public class Operatable<T>
+{
+    public static Operatable<T> operator +(Operatable<T> a, Operatable<T> b)
+    {
+        return a;
+    }
+}
 public class Player : MonoBehaviour
 {
     public float hp
@@ -29,6 +38,44 @@ public class Player : MonoBehaviour
     }
     [SerializeField] private float _hpMax = 100;
     public delegate void OnHpChangedHandler(float vlaue);
+    //public event OnHpChangedHandler OnHpChanged;
     public event OnHpChangedHandler onHpChanged;
+
+    // Action 대리자
+    //파라미터를 0 ~ 16개까지 받을 수 있는 void를 반환하는 형태의 대리자
+    public Action<int, float, string> action;
+
+    //Func 대리자
+    //파라미터를 0 ~ 16개까지 받을 수 있는
+    //제네릭타입을 반환하는 형태의 대리자.
+    public Func<int, float, string> func;
+
+    //Predicate 대리자
+    //파라미터를 1개 받고,
+    //bool 타입을 반환하는 형태의 대리자
+    //어떤 아이템의 match 조건을 검사할 때 사용함(자료구조에서 특정 자료 탐색을 해야할때 주로 씀)
+    public Predicate<int> match;
+
+    //Generic
+    //어떤 타입을 일반화하는 사용자정의 서식
+
+    //where 한정자
+    //Generic타입의 어떤 타입으로 공변가능한지 제한거는 한정자
+    //public T Sum<T>(T a, T b)
+    //    where T : Operatable<T>
+    //    (a + b);
+
+    public int Sum(int a, int b)
+        => a + b;
+
+    public float Sum(float a, float b)
+        => a + b;
+    public double Sum(double a, double b)
+        => a + b;
+
+    public void DepleteHp(float amout)
+    {
+        hp -= amout;
+    }
 }
 
