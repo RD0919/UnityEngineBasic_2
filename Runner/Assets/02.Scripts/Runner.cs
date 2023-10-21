@@ -1,17 +1,89 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Runner : MonoBehaviour
 {
-    [SerializeField] private float _speed = 3.0f;
+    public bool isMovable
+    {
+        get => _isMovable;
+        set
+        {
+            _isMovable = value;
+            if (value == false)
+                speedModified = 0.0f;
+        }
+    }
+    private bool _isMovable = true;
 
-    //ÀÌµ¿°Å¸® = ¼Ó·Â * ½Ã°£
-    //°íÁ¤ ÇÁ·¹ÀÓ´ç ÀÌµ¿°Å¸® = ¼Ó·Â * °íÁ¤ ÇÁ·¹ÀÓ°£ ½Ã°£º¯È­
+    public float speedModified
+    {
+        get => _speedModfied;
+        set
+        {
+            _speedModfied = value;
+            _animator.SetFloat("speed", value);
+        }
+    }
+
+    [SerializeField] private float _speed = 3.0f;
+    private float _speedModfied;
+
+    [SerializeField] private float _speedmodifyingPeriod;
+    private float _modifyingTimer;
+    [Range(0.0f, 1.0f)][SerializeField] private float _stability;
+
+    private Animator _animator;
+
+    public void Finish(int grade)
+    {
+        isMovable = false;
+
+        _animator.Play("Salute");
+        switch (grade) 
+        {
+            case 0:
+                _animator.Play("Jumping");
+                break;
+            case 1:
+            case 2:
+                _animator.Play("Salute");
+                break;
+            default:
+                _animator.Play("KneelDown");
+                break;
+        }
+
+        PlayManager.instance.RegisterRunnerFinished(this);
+    }
+
+    private void Awake()
+    {
+        
+        _animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        PlayManager.instance.RegisterRunnerFinished(this);
+    }
+
+    //ì´ë™ê±°ë¦¬ = ì†ë ¥ * ì‹œê°„
+    //ê³ ì • í”„ë ˆì„ë‹¹ ì´ë™ê±°ë¦¬ = ì†ë ¥ * ê³ ì • í”„ë ˆì„ê°„ ì‹œê°„ë³€í™”
 
     private void FixedUpdate()
     {
+        if (_isMovable == false)
+            return;
+
+        if(_modifyingTimer <= 0.0f)
+        {
+            //ì—¬ê¸°ì„œ ì†ë„ ì¡°ì ˆ
+            speedModified = _speed * Random.Range(_stability, 1.0f);
+            _modifyingTimer = _speedmodifyingPeriod;
+        }
         //transform.position += Vector3.forward* _speed *Time.fixedDeltaTime;
-        transform.Translate(Vector3.forward * _speed * Time.fixedDeltaTime);// À§Ä¡ º¯È­
+        transform.Translate(Vector3.forward * _speedModfied * Time.fixedDeltaTime);// ìœ„ì¹˜ ë³€í™”
     }
 }

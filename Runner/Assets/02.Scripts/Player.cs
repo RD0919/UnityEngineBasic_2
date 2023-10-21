@@ -41,26 +41,26 @@ public class Player : MonoBehaviour
     //public event OnHpChangedHandler OnHpChanged;
     public event OnHpChangedHandler onHpChanged;
 
-    // Action ´ë¸®ÀÚ
-    //ÆÄ¶ó¹ÌÅÍ¸¦ 0 ~ 16°³±îÁö ¹ÞÀ» ¼ö ÀÖ´Â void¸¦ ¹ÝÈ¯ÇÏ´Â ÇüÅÂÀÇ ´ë¸®ÀÚ
+    // Action ëŒ€ë¦¬ìž
+    //íŒŒë¼ë¯¸í„°ë¥¼ 0 ~ 16ê°œê¹Œì§€ ë°›ì„ ìˆ˜ ìžˆëŠ” voidë¥¼ ë°˜í™˜í•˜ëŠ” í˜•íƒœì˜ ëŒ€ë¦¬ìž
     public Action<int, float, string> action;
 
-    //Func ´ë¸®ÀÚ
-    //ÆÄ¶ó¹ÌÅÍ¸¦ 0 ~ 16°³±îÁö ¹ÞÀ» ¼ö ÀÖ´Â
-    //Á¦³×¸¯Å¸ÀÔÀ» ¹ÝÈ¯ÇÏ´Â ÇüÅÂÀÇ ´ë¸®ÀÚ.
+    //Func ëŒ€ë¦¬ìž
+    //íŒŒë¼ë¯¸í„°ë¥¼ 0 ~ 16ê°œê¹Œì§€ ë°›ì„ ìˆ˜ ìžˆëŠ”
+    //ì œë„¤ë¦­íƒ€ìž…ì„ ë°˜í™˜í•˜ëŠ” í˜•íƒœì˜ ëŒ€ë¦¬ìž.
     public Func<int, float, string> func;
 
-    //Predicate ´ë¸®ÀÚ
-    //ÆÄ¶ó¹ÌÅÍ¸¦ 1°³ ¹Þ°í,
-    //bool Å¸ÀÔÀ» ¹ÝÈ¯ÇÏ´Â ÇüÅÂÀÇ ´ë¸®ÀÚ
-    //¾î¶² ¾ÆÀÌÅÛÀÇ match Á¶°ÇÀ» °Ë»çÇÒ ¶§ »ç¿ëÇÔ(ÀÚ·á±¸Á¶¿¡¼­ Æ¯Á¤ ÀÚ·á Å½»öÀ» ÇØ¾ßÇÒ¶§ ÁÖ·Î ¾¸)
+    //Predicate ëŒ€ë¦¬ìž
+    //íŒŒë¼ë¯¸í„°ë¥¼ 1ê°œ ë°›ê³ ,
+    //bool íƒ€ìž…ì„ ë°˜í™˜í•˜ëŠ” í˜•íƒœì˜ ëŒ€ë¦¬ìž
+    //ì–´ë–¤ ì•„ì´í…œì˜ match ì¡°ê±´ì„ ê²€ì‚¬í•  ë•Œ ì‚¬ìš©í•¨(ìžë£Œêµ¬ì¡°ì—ì„œ íŠ¹ì • ìžë£Œ íƒìƒ‰ì„ í•´ì•¼í• ë•Œ ì£¼ë¡œ ì”€)
     public Predicate<int> match;
 
     //Generic
-    //¾î¶² Å¸ÀÔÀ» ÀÏ¹ÝÈ­ÇÏ´Â »ç¿ëÀÚÁ¤ÀÇ ¼­½Ä
+    //ì–´ë–¤ íƒ€ìž…ì„ ì¼ë°˜í™”í•˜ëŠ” ì‚¬ìš©ìžì •ì˜ ì„œì‹
 
-    //where ÇÑÁ¤ÀÚ
-    //GenericÅ¸ÀÔÀÇ ¾î¶² Å¸ÀÔÀ¸·Î °øº¯°¡´ÉÇÑÁö Á¦ÇÑ°Å´Â ÇÑÁ¤ÀÚ
+    //where í•œì •ìž
+    //Genericíƒ€ìž…ì˜ ì–´ë–¤ íƒ€ìž…ìœ¼ë¡œ ê³µë³€ê°€ëŠ¥í•œì§€ ì œí•œê±°ëŠ” í•œì •ìž
     //public T Sum<T>(T a, T b)
     //    where T : Operatable<T>
     //    (a + b);
