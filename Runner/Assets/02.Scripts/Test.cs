@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// MonoBehaviour .. 
+// MonoBehaviour ..
 // Component 의 기본 단위 , 생성자를 직접 호출해서 생성하는게 아니고
-// 해당 Script Instance 가 로드될 때 객체가 생성이 됨.
+// 해당 Script Instance 가 로드될 때 객체가 생성이 됨. 
 // -> 직접 우리가 생성자를 호출하면 안됨. 
 public class Test : MonoBehaviour
 {
@@ -62,7 +62,7 @@ public class Test : MonoBehaviour
     {
         Debug.Log("On Mouse over");
     }
-
+    
     // 매프레임마다 호출 (기기 성능에 따라 호출 주기가 달라짐)
     private void Update()
     {
@@ -85,6 +85,11 @@ public class Test : MonoBehaviour
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(Vector3.zero, 2.1f);
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        
     }
 
     private void OnApplicationQuit()

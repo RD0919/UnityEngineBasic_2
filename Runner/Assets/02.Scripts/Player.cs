@@ -1,16 +1,17 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
 
 public class Operatable<T>
 {
+    public T value;
+
     public static Operatable<T> operator +(Operatable<T> a, Operatable<T> b)
     {
         return a;
     }
 }
+
+
 public class Player : MonoBehaviour
 {
     public float hp
@@ -28,7 +29,8 @@ public class Player : MonoBehaviour
             onHpChanged(value);
         }
     }
-    [SerializeField] private float _hp;
+    [SerializeField] private float _hp; // Serialize : µ¥ÀÌÅÍ¸¦ ÅØ½ºÆ®·Î, Deserialize : ÅØ½ºÆ®¸¦ µ¥ÀÌÅÍ·Î
+
     public float hpMax
     {
         get
@@ -37,45 +39,48 @@ public class Player : MonoBehaviour
         }
     }
     [SerializeField] private float _hpMax = 100;
-    public delegate void OnHpChangedHandler(float vlaue);
-    //public event OnHpChangedHandler OnHpChanged;
-    public event OnHpChangedHandler onHpChanged;
+    public delegate void OnHpChangedHandler(float value);
+    //public event OnHpChangedHandler onHpChanged;
+    public event Action<float> onHpChanged;
 
-    // Action ëŒ€ë¦¬ì
-    //íŒŒë¼ë¯¸í„°ë¥¼ 0 ~ 16ê°œê¹Œì§€ ë°›ì„ ìˆ˜ ìˆëŠ” voidë¥¼ ë°˜í™˜í•˜ëŠ” í˜•íƒœì˜ ëŒ€ë¦¬ì
+    // Action ´ë¸®ÀÚ
+    // ÆÄ¶ó¹ÌÅÍ¸¦ 0~ 16°³ ±îÁö ¹ŞÀ» ¼ö ÀÖ´Â 
+    // void ¸¦ ¹İÈ¯ÇÏ´Â ÇüÅÂÀÇ ´ë¸®ÀÚ.
     public Action<int, float, string> action;
 
-    //Func ëŒ€ë¦¬ì
-    //íŒŒë¼ë¯¸í„°ë¥¼ 0 ~ 16ê°œê¹Œì§€ ë°›ì„ ìˆ˜ ìˆëŠ”
-    //ì œë„¤ë¦­íƒ€ì…ì„ ë°˜í™˜í•˜ëŠ” í˜•íƒœì˜ ëŒ€ë¦¬ì.
+    // Func ´ë¸®ÀÚ
+    // ÆÄ¶ó¹ÌÅÍ¸¦ 0~ 16°³ ±îÁö ¹ŞÀ» ¼ö ÀÖ´Â
+    // Á¦³×¸¯Å¸ÀÔÀ» ¹İÈ¯ÇÏ´Â ÇüÅÂÀÇ ´ë¸®ÀÚ.
     public Func<int, float, string> func;
 
-    //Predicate ëŒ€ë¦¬ì
-    //íŒŒë¼ë¯¸í„°ë¥¼ 1ê°œ ë°›ê³ ,
-    //bool íƒ€ì…ì„ ë°˜í™˜í•˜ëŠ” í˜•íƒœì˜ ëŒ€ë¦¬ì
-    //ì–´ë–¤ ì•„ì´í…œì˜ match ì¡°ê±´ì„ ê²€ì‚¬í•  ë•Œ ì‚¬ìš©í•¨(ìë£Œêµ¬ì¡°ì—ì„œ íŠ¹ì • ìë£Œ íƒìƒ‰ì„ í•´ì•¼í• ë•Œ ì£¼ë¡œ ì”€)
+    // Predicate ´ë¸®ÀÚ
+    // ÆÄ¶ó¹ÌÅÍ 1°³ ¹Ş°í,
+    // bool Å¸ÀÔ ¹İÈ¯ÇÏ´Â ÇüÅÂÀÇ ´ë¸®ÀÚ.
+    // ¾î¶² ¾ÆÀÌÅÛÀÇ match Á¶°ÇÀ» °Ë»çÇÒ¶§ »ç¿ëÇÔ. (ÀÚ·á±¸Á¶¿¡¼­ Æ¯Á¤ ÀÚ·á Å½»öÀ» ÇØ¾ßÇÒ¶§ ÁÖ·Î ¾¸)
     public Predicate<int> match;
 
-    //Generic
-    //ì–´ë–¤ íƒ€ì…ì„ ì¼ë°˜í™”í•˜ëŠ” ì‚¬ìš©ìì •ì˜ ì„œì‹
 
-    //where í•œì •ì
-    //Genericíƒ€ì…ì˜ ì–´ë–¤ íƒ€ì…ìœ¼ë¡œ ê³µë³€ê°€ëŠ¥í•œì§€ ì œí•œê±°ëŠ” í•œì •ì
-    //public T Sum<T>(T a, T b)
-    //    where T : Operatable<T>
-    //    (a + b);
+    // Generic 
+    // ¾î¶² Å¸ÀÔÀ» ÀÏ¹İÈ­ÇÏ´Â »ç¿ëÀÚÁ¤ÀÇ ¼­½Ä
+    
+    // where ÇÑÁ¤ÀÚ
+    // GenericÅ¸ÀÔÀÌ ¾î¶² Å¸ÀÔÀ¸·Î °øº¯°¡´ÉÇÑÁö Á¦ÇÑÀ» °Å´Â ÇÑÁ¤ÀÚ
+    public T Sum<T>(T a, T b)
+        where T : Operatable<T>
+        => (a + b).value;
 
     public int Sum(int a, int b)
         => a + b;
 
     public float Sum(float a, float b)
         => a + b;
+
     public double Sum(double a, double b)
         => a + b;
+
 
     public void DepleteHp(float amout)
     {
         hp -= amout;
     }
 }
-
