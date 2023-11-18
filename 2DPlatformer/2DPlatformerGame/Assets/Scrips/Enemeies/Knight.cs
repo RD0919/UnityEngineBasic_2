@@ -17,11 +17,33 @@ public enum WalkableDirection
 public class Knight : MonoBehaviour
 {
     float walkSpeed = 3.0f;
+    [SerializeField] private bool _hasTarget = false;
+    [SerializeField] private DetectionZone attackZone;
+
     Rigidbody2D rb;
     CapsuleCollider2D capsuleCollider;
     TouchingDirections touchingDirections;
+    Animator animator;
+
     private WalkableDirection walkableDirection = WalkableDirection.Right;
     private Vector2 walkDirectionVector = Vector2.right;
+
+    public bool hasTarget
+    { get { return _hasTarget; }
+        private set 
+        {
+            _hasTarget = value;
+            animator.SetBool("HasTarget", value);
+        }
+    }
+
+    public bool CanMove
+    {
+        get
+        {
+            return animator.GetBool("CanMove");
+        }
+    }
 
     public WalkableDirection WalkDirection
     {
@@ -51,16 +73,27 @@ public class Knight : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         touchingDirections = GetComponent<TouchingDirections>();
+        animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        hasTarget = attackZone.detectedColiders.Count > 0;
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if(touchingDirections.isGrounded && touchingDirections.IsOnWall)
+        if (touchingDirections.isGrounded && touchingDirections.IsOnWall)
         {
             FlipDirection();
         }
-        rb.velocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.velocity.y);
+        if(CanMove)
+            rb.velocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.velocity.y);
+        else
+        {
+            rb.velocity = new Vector2(0 * walkDirectionVector.x, rb.velocity.y);
+        }
     }
     
     private void FlipDirection()
@@ -72,6 +105,14 @@ public class Knight : MonoBehaviour
         else if(WalkDirection == WalkableDirection.Left)
         {
             WalkDirection = WalkableDirection.Right;
+        }
+    }
+
+    public void OnCliffDetected()
+    {
+        if(touchingDirections.isGrounded)
+        {
+            FlipDirection();
         }
     }
 
