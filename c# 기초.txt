@@ -1,0 +1,7 @@
+삼항 연산자 : true일 때 A, false일 때 B 출력
+? A : B;
+foreach
+void : 반환 값이 없는 데이터
+transform.position = Vector3.MoveTowards(현재 위치, 목표 위치, 속도) : 등속 이동
+transform.position = Vector3.SmoothDamp(현재 위치, 목표 위치, 참조속도, 속도) : 부드러운 감속 이동
+transform.position = Vector3.Lerp(현재 위치, 목표 위치, 속도) : SmoothDamp 보다 감속시간이 김
