@@ -4,6 +4,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "Item")
         {
+            Manager.GetItem(scorce);
             audio.Play();
         }
         else if(other.tag == "Finish")
